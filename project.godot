@@ -6,8 +6,8 @@ config_version=5
 [application]
 
 config/name="背刺拍卖会"
-run/main_scene="res://scenes/main/main.tscn"
-config/features=PackedStringArray("4.4")
+run/main_scene="res://scenes/main/main_menu.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
