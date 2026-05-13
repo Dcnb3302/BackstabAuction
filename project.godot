@@ -27,8 +27,9 @@ SettingsSystem="*res://scripts/systems/settings_system.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=true
 
 [rendering]
 
 renderer/rendering_method="forward_plus"
-environment/defaults/default_clear_color=Color(0.1, 0.1, 0.15, 1)
+environment/defaults/default_clear_color=Color(0.08, 0.08, 0.15, 1)

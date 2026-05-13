@@ -163,8 +163,7 @@ func _update_sealed_bid_panel() -> void:
 		return
 	sealed_bid_panel.visible = (
 		AuctionSystem.current_auction_type == AuctionSystem.AuctionType.SEALED and
-		AuctionSystem.is_auction_active and
-		not AuctionSystem.human_sealed_bid_submitted
+		AuctionSystem.is_auction_active
 	)
 	if sealed_bid_input and current_item:
 		var human = GameManager.get_human_player()

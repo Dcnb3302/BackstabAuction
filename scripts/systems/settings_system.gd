@@ -56,6 +56,8 @@ func _save_settings() -> void:
 		file.close()
 
 func _apply_window_settings() -> void:
+	if Engine.is_editor_hint():
+		return
 	match settings.window_mode:
 		0:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
