@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://auction"]
+[gd_scene load_steps=2 format=3 uid="uid://auction_main"]
 
 [ext_resource type="Script" path="res://scripts/ui/auction_ui.gd" id="1"]
 
@@ -25,17 +25,19 @@ offset_bottom = -10.0
 
 [node name="TopBar" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 45)
 
 [node name="RoundLabel" type="Label" parent="VBoxContainer/TopBar"]
 layout_mode = 2
 text = "第 0/30 轮"
 add_theme_font_size_override("font_size", 18)
+add_theme_color_override("font_color", Color(1, 0.85, 0.3, 1))
 
 [node name="PhaseLabel" type="Label" parent="VBoxContainer/TopBar"]
 layout_mode = 2
 text = "准备中"
 add_theme_font_size_override("font_size", 18)
+add_theme_color_override("font_color", Color(0.5, 0.9, 1, 1))
 
 [node name="Spacer" type="Control" parent="VBoxContainer/TopBar"]
 layout_mode = 2
@@ -43,12 +45,22 @@ size_flags_horizontal = 3
 
 [node name="TimerLabel" type="Label" parent="VBoxContainer/TopBar"]
 layout_mode = 2
-text = "剩余: 15.0秒"
+text = "⏱ 15.0秒"
 add_theme_font_size_override("font_size", 18)
+add_theme_color_override("font_color", Color(1, 1, 0.5, 1))
+
+[node name="MenuButton" type="Button" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+text = "☰ 菜单"
+add_theme_font_size_override("font_size", 16)
 
 [node name="MainHBox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 
 [node name="LeftPanel" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
 layout_mode = 2
@@ -56,20 +68,29 @@ size_flags_horizontal = 3
 
 [node name="InfoBar" type="HBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
 layout_mode = 2
+custom_minimum_size = Vector2(0, 35)
 
 [node name="GoldLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/InfoBar"]
 layout_mode = 2
 text = "金币: 4000"
 add_theme_font_size_override("font_size", 16)
+add_theme_color_override("font_color", Color(1, 0.85, 0.3, 1))
 
 [node name="DebtLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/InfoBar"]
 layout_mode = 2
 text = "欠款: 0"
 add_theme_font_size_override("font_size", 16)
+add_theme_color_override("font_color", Color(1, 0.5, 0.5, 1))
+
+[node name="NetWorthLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/InfoBar"]
+layout_mode = 2
+text = "净资产: 4000"
+add_theme_font_size_override("font_size", 16)
+add_theme_color_override("font_color", Color(0.5, 1, 0.5, 1))
 
 [node name="ItemPanel" type="PanelContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 220)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel"]
 layout_mode = 1
@@ -85,13 +106,20 @@ offset_bottom = -10.0
 
 [node name="ItemNameLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
 layout_mode = 2
-text = "物品: "
-add_theme_font_size_override("font_size", 20)
+text = "📦 物品名称"
+add_theme_font_size_override("font_size", 22)
+add_theme_color_override("font_color", Color(1, 0.9, 0.5, 1))
 
 [node name="ItemRarityLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
 layout_mode = 2
 text = "稀有度: "
 add_theme_font_size_override("font_size", 16)
+
+[node name="ItemDescLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
+layout_mode = 2
+text = "这是一件神秘的拍卖品..."
+add_theme_font_size_override("font_size", 14)
+autowrap_mode = 2
 
 [node name="StartingPriceLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
 layout_mode = 2
@@ -101,7 +129,8 @@ add_theme_font_size_override("font_size", 16)
 [node name="CurrentBidLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
 layout_mode = 2
 text = "当前最高: "
-add_theme_font_size_override("font_size", 18)
+add_theme_font_size_override("font_size", 20)
+add_theme_color_override("font_color", Color(1, 1, 0.3, 1))
 
 [node name="QualityLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
 layout_mode = 2
@@ -111,7 +140,7 @@ add_theme_font_size_override("font_size", 16)
 
 [node name="SealedBidPanel" type="PanelContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 130)
 visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel"]
@@ -128,12 +157,9 @@ offset_bottom = -10.0
 
 [node name="SealedBidLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel/VBoxContainer"]
 layout_mode = 2
-text = "密封拍卖 - 输入你的出价:"
+text = "🔒 密封拍卖 - 输入你的出价:"
 add_theme_font_size_override("font_size", 16)
-
-[node name="StartingPriceInfo" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel/VBoxContainer"]
-layout_mode = 2
-text = "起拍价: 0 金币"
+add_theme_color_override("font_color", Color(0.8, 0.5, 1, 1))
 
 [node name="SealedBidInput" type="SpinBox" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel/VBoxContainer"]
 layout_mode = 2
@@ -141,10 +167,12 @@ value = 0.0
 min_value = 0.0
 max_value = 99999.0
 step = 10.0
+add_theme_font_size_override("font_size", 16)
 
 [node name="SealedBidConfirm" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel/VBoxContainer"]
 layout_mode = 2
-text = "确认出价"
+text = "✅ 确认出价"
+add_theme_font_size_override("font_size", 16)
 
 [node name="SkillPanel" type="PanelContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
 layout_mode = 2
@@ -163,8 +191,9 @@ offset_bottom = -5.0
 
 [node name="SkillLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/SkillPanel/VBoxContainer"]
 layout_mode = 2
-text = "技能:"
+text = "⚡ 技能:"
 add_theme_font_size_override("font_size", 14)
+add_theme_color_override("font_color", Color(0.8, 0.8, 1, 1))
 
 [node name="SkillButtons" type="HBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel/SkillPanel/VBoxContainer"]
 layout_mode = 2
@@ -175,22 +204,27 @@ layout_mode = 2
 [node name="BidSmall" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
 layout_mode = 2
 text = "+10"
+add_theme_font_size_override("font_size", 16)
 
 [node name="BidMedium" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
 layout_mode = 2
 text = "+30"
+add_theme_font_size_override("font_size", 16)
 
 [node name="BidLarge" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
 layout_mode = 2
 text = "+50"
+add_theme_font_size_override("font_size", 16)
 
 [node name="LoanButton" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
 layout_mode = 2
-text = "借钱(+100)"
+text = "💰 借钱(+100)"
+add_theme_font_size_override("font_size", 16)
 
 [node name="ProcessAIBid" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
 layout_mode = 2
-text = "AI出价"
+text = "🤖 AI出价"
+add_theme_font_size_override("font_size", 16)
 
 [node name="RightPanel" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
 layout_mode = 2
@@ -214,7 +248,7 @@ offset_bottom = -10.0
 
 [node name="PlayersLabel" type="Label" parent="VBoxContainer/MainHBox/RightPanel/PlayersPanel/VBoxContainer"]
 layout_mode = 2
-text = "玩家列表"
+text = "👥 玩家列表"
 add_theme_font_size_override("font_size", 16)
 add_theme_color_override("font_color", Color(1, 0.8, 0.0, 1))
 
@@ -239,7 +273,119 @@ offset_bottom = -5.0
 
 [node name="LogText" type="RichTextLabel" parent="VBoxContainer/MainHBox/RightPanel/LogPanel/ScrollContainer"]
 layout_mode = 2
-text = "游戏开始..."
+text = "🎮 游戏开始..."
 bbcode_enabled = true
 size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 200)
+
+[node name="OverlayPanel" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 100.0
+offset_top = 100.0
+offset_right = -100.0
+offset_bottom = -100.0
+
+[node name="OverlayContainer" type="VBoxContainer" parent="VBoxContainer/OverlayPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/OverlayPanel"]
+layout_mode = 2
+text = "✖ 关闭"
+add_theme_font_size_override("font_size", 16)
+
+[node name="TutorialOverlay" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 200.0
+offset_top = 200.0
+offset_right = -200.0
+offset_bottom = -200.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TutorialOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+
+[node name="TutorialTitle" type="Label" parent="VBoxContainer/TutorialOverlay/VBoxContainer"]
+layout_mode = 2
+text = "教程标题"
+add_theme_font_size_override("font_size", 20)
+add_theme_color_override("font_color", Color(1, 0.9, 0.5, 1))
+horizontal_alignment = 1
+
+[node name="TutorialDesc" type="Label" parent="VBoxContainer/TutorialOverlay/VBoxContainer"]
+layout_mode = 2
+text = "教程描述内容..."
+add_theme_font_size_override("font_size", 14)
+autowrap_mode = 2
+
+[node name="TutorialNextButton" type="Button" parent="VBoxContainer/TutorialOverlay/VBoxContainer"]
+layout_mode = 2
+text = "➡ 下一步"
+add_theme_font_size_override("font_size", 16)
+
+[node name="TutorialSkipButton" type="Button" parent="VBoxContainer/TutorialOverlay/VBoxContainer"]
+layout_mode = 2
+text = "⏭ 跳过教程"
+add_theme_font_size_override("font_size", 16)
+
+[node name="AchievementPopup" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_left = -150.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 60.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AchievementPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+
+[node name="Label" type="Label" parent="VBoxContainer/AchievementPopup/VBoxContainer"]
+layout_mode = 2
+text = "🏆 成就解锁: "
+add_theme_font_size_override("font_size", 16)
+add_theme_color_override("font_color", Color(1, 0.9, 0.3, 1))
+horizontal_alignment = 1

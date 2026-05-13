@@ -18,6 +18,10 @@ BlackMarketSystem="*res://scripts/systems/black_market_system.gd"
 DebtSystem="*res://scripts/systems/debt_system.gd"
 RandomEventSystem="*res://scripts/systems/random_event_system.gd"
 AIController="*res://scripts/core/ai_controller.gd"
+AchievementSystem="*res://scripts/systems/achievement_system.gd"
+StatsSystem="*res://scripts/systems/stats_system.gd"
+TutorialSystem="*res://scripts/systems/tutorial_system.gd"
+SettingsSystem="*res://scripts/systems/settings_system.gd"
 
 [display]
 

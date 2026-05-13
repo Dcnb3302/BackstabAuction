@@ -233,17 +233,27 @@ func _generate_item_pool() -> void:
 		"龙鳞护甲", "精灵弓箭", "亡灵法杖", "矮人战锤",
 		"圣骑士盾", "暗影斗篷", "凤凰羽毛", "海妖珍珠",
 		"泰坦之核", "虚空碎片", "时间沙漏", "命运之轮",
-		"灵魂宝钻", "星辰碎片", "月光石", "烈焰之心"
+		"灵魂宝钻", "星辰碎片", "月光石", "烈焰之心",
+		"深渊魔典", "冰霜之冠", "雷霆战斧", "翡翠梦境",
+		"混沌原石", "圣光十字架", "暗影匕首", "狂暴之怒",
+		"治愈圣杯", "幻象之镜", "命运骰子", "禁忌之书",
+		"远古龙蛋", "元素之心", "时空裂隙石", "死神镰刀",
+		"天使之翼", "恶魔之角", "不朽王冠", "失落权杖",
+		"破晓之剑", "夜幕之盾", "风暴之锤", "自然之冠",
+		"冥河之水", "黄金圣衣", "紫水晶戒", "红宝石项链",
+		"蓝宝石吊坠", "祖母绿胸针", "珍珠耳环", "黑曜石戒指",
+		"秘银铠甲", "精金头盔", "龙骨长弓", "蛇发女妖之瞳",
+		"不死鸟之灰", "独角兽之角", "美杜莎之发", "赫尔墨斯之鞋"
 	]
-	var rarities = ["普通", "稀有", "史诗", "传说"]
+	var rarities = ["普通", "稀有", "史诗", "传说", "神话"]
 
-	for i in range(20):
+	for i in range(40):
 		var item = AuctionItem.new()
 		item.id = item_id_counter
 		item_id_counter += 1
 		item.name = item_names[i % item_names.size()]
 		item.rarity = rarities[randi() % rarities.size()]
-		item.base_value = randi_range(200, 1000)
+		item.base_value = randi_range(150, 1500)
 		item.generate_starting_price()
 		auction_items_pool.append(item)
 
