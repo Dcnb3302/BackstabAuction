@@ -1,0 +1,245 @@
+[gd_scene load_steps=2 format=3 uid="uid://auction"]
+
+[ext_resource type="Script" path="res://scripts/ui/auction_ui.gd" id="1"]
+
+[node name="AuctionScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="TopBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+
+[node name="RoundLabel" type="Label" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+text = "第 0/30 轮"
+add_theme_font_size_override("font_size", 18)
+
+[node name="PhaseLabel" type="Label" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+text = "准备中"
+add_theme_font_size_override("font_size", 18)
+
+[node name="Spacer" type="Control" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+text = "剩余: 15.0秒"
+add_theme_font_size_override("font_size", 18)
+
+[node name="MainHBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftPanel" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InfoBar" type="HBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
+layout_mode = 2
+
+[node name="GoldLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/InfoBar"]
+layout_mode = 2
+text = "金币: 4000"
+add_theme_font_size_override("font_size", 16)
+
+[node name="DebtLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/InfoBar"]
+layout_mode = 2
+text = "欠款: 0"
+add_theme_font_size_override("font_size", 16)
+
+[node name="ItemPanel" type="PanelContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 200)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="ItemNameLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
+layout_mode = 2
+text = "物品: "
+add_theme_font_size_override("font_size", 20)
+
+[node name="ItemRarityLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
+layout_mode = 2
+text = "稀有度: "
+add_theme_font_size_override("font_size", 16)
+
+[node name="StartingPriceLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
+layout_mode = 2
+text = "起拍价: "
+add_theme_font_size_override("font_size", 16)
+
+[node name="CurrentBidLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
+layout_mode = 2
+text = "当前最高: "
+add_theme_font_size_override("font_size", 18)
+
+[node name="QualityLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/ItemPanel/VBoxContainer"]
+layout_mode = 2
+text = "品相: ???"
+visible = false
+add_theme_font_size_override("font_size", 16)
+
+[node name="SealedBidPanel" type="PanelContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 120)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="SealedBidLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel/VBoxContainer"]
+layout_mode = 2
+text = "密封拍卖 - 输入你的出价:"
+add_theme_font_size_override("font_size", 16)
+
+[node name="StartingPriceInfo" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel/VBoxContainer"]
+layout_mode = 2
+text = "起拍价: 0 金币"
+
+[node name="SealedBidInput" type="SpinBox" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel/VBoxContainer"]
+layout_mode = 2
+value = 0.0
+min_value = 0.0
+max_value = 99999.0
+step = 10.0
+
+[node name="SealedBidConfirm" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/SealedBidPanel/VBoxContainer"]
+layout_mode = 2
+text = "确认出价"
+
+[node name="SkillPanel" type="PanelContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel/SkillPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 10.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = -5.0
+
+[node name="SkillLabel" type="Label" parent="VBoxContainer/MainHBox/LeftPanel/SkillPanel/VBoxContainer"]
+layout_mode = 2
+text = "技能:"
+add_theme_font_size_override("font_size", 14)
+
+[node name="SkillButtons" type="HBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel/SkillPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ActionPanel" type="HBoxContainer" parent="VBoxContainer/MainHBox/LeftPanel"]
+layout_mode = 2
+
+[node name="BidSmall" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
+layout_mode = 2
+text = "+10"
+
+[node name="BidMedium" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
+layout_mode = 2
+text = "+30"
+
+[node name="BidLarge" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
+layout_mode = 2
+text = "+50"
+
+[node name="LoanButton" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
+layout_mode = 2
+text = "借钱(+100)"
+
+[node name="ProcessAIBid" type="Button" parent="VBoxContainer/MainHBox/LeftPanel/ActionPanel"]
+layout_mode = 2
+text = "AI出价"
+
+[node name="RightPanel" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(280, 0)
+
+[node name="PlayersPanel" type="PanelContainer" parent="VBoxContainer/MainHBox/RightPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 250)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainHBox/RightPanel/PlayersPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="PlayersLabel" type="Label" parent="VBoxContainer/MainHBox/RightPanel/PlayersPanel/VBoxContainer"]
+layout_mode = 2
+text = "玩家列表"
+add_theme_font_size_override("font_size", 16)
+add_theme_color_override("font_color", Color(1, 0.8, 0.0, 1))
+
+[node name="PlayersList" type="VBoxContainer" parent="VBoxContainer/MainHBox/RightPanel/PlayersPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="LogPanel" type="PanelContainer" parent="VBoxContainer/MainHBox/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MainHBox/RightPanel/LogPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+
+[node name="LogText" type="RichTextLabel" parent="VBoxContainer/MainHBox/RightPanel/LogPanel/ScrollContainer"]
+layout_mode = 2
+text = "游戏开始..."
+bbcode_enabled = true
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 200)
